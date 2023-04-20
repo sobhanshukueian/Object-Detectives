@@ -8,6 +8,11 @@
   A survey of object detection papers with notes, links, and other details, along with run experiments and results.
 </p>
 
+#ToDo: 
+- [ ] Compelete Papers Table
+- [ ] Compelete Experiments Table
+
+
 ## :books: Papers
 
 | Paper | Link | Type | mAP | Speed | Backbone | Neck | Head | Augmentation | Training Details | Main Idea of Paper | Image | Other Notes |
@@ -126,4 +131,8 @@ Object detection has a wide range of applications, including:
 | YOLO v5 416-lite-s	| | | | | |
 | YOLO v5 416-lite-i8s	| | | | | |
 | YOLO v5 512-lite-c	 | | | | | |
+
+## 📝 Contributing
+
+We welcome contributions to this repository! Please open an issue or pull request for any suggestions or changes.
 
