@@ -122,15 +122,15 @@ Object detection has a wide range of applications, including:
 | YOLO v5 medium |10fps -	67|2fps - 67 | - | - |4fps - 67|
 | YOLO v5 small	| 33fps -	62 | 3fps -	62 | - | - |9fps -	62 |
 | YOLO v5 nano	 |58fps -	46 | 11fps -	46 | - | - | 20fps -	46 |
-| YOLOX tiny	| | | | | |
-| YOLOX nano	| | | | | |
-| YOLO v5 320-lite-e	| | | | | |
-| YOLO v5 416-lite-e	| | | | | |
-| YOLO v5 320-lite-i8e	| | | | | |
-| YOLO v5 416-lite-i8e	| | | | | |
-| YOLO v5 416-lite-s	| | | | | |
-| YOLO v5 416-lite-i8s	| | | | | |
-| YOLO v5 512-lite-c	 | | | | | |
+| YOLOX tiny	| - | - | 10fps -	32.8 |7fps - 32.8| -  |
+| YOLOX nano	| - | - | 20 fps -	25.8 |	13 fps -	25.8 | - |
+| YOLO v5 320-lite-e	| -| - | 27 fps -	35.1 |	17 fps -	35.1 | 20fps -	33.7 |
+| YOLO v5 416-lite-e	|- | -| 20 fps -	35.1 |	12 fps -	35.1 | - |
+| YOLO v5 320-lite-i8e	|- |- | 21 fps -	35.1 |	22 fps -	35.1 |   -|
+| YOLO v5 416-lite-i8e	| -| -| 17 fps -	35.1 |	17 fps -	35.1 | - |
+| YOLO v5 416-lite-s	| - |  -| 18 fps -	42 |	11 fps -	42 | - |
+| YOLO v5 416-lite-i8s	| - | - | 19 fps -	42 |	17 fps -	42 | -|
+| YOLO v5 512-lite-c	 | - | - | 9 fps -	50.9 |	6 fps -	50.9 | 12fps -	44 |
 
 ## 📝 Contributing
 
