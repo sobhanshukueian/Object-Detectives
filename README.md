@@ -140,3 +140,9 @@ Object detection has a wide range of applications, including:
 
 We welcome contributions to this repository! Please open an issue or pull request for any suggestions or changes.
 
+
+# ⭐️ Please Star This Repo ⭐️
+
+If you found this project useful or interesting, please consider giving it a star on GitHub! This helps other users discover the project and provides valuable feedback to the maintainers.
+
+Thank you for your support!
