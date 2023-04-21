@@ -2,15 +2,19 @@
   <img src="https://img.shields.io/badge/Object%20Detection-Papers%20and%20Experiments-blueviolet.svg" alt="Object Detection Papers and Experiments">
 </p>
 
-<h1 align="center">Object Detection Papers and Experiments</h1>
+<h1 align="center">Object Detection [👁️] Papers and Experiments</h1>
 
 <p align="center">
   A survey of object detection papers with notes, links, and other details, along with run experiments and results.
 </p>
 
-#ToDo: 
-- [ ] Compelete Papers Table
-- [ ] Compelete Experiments Table
+<p align="center">
+  <a href="#books-papers">Papers</a> •
+  <a href="#mag_right-comparison-between-yolov4-and-yolov5">YOLO-V4 VS YOLO-V5</a> •
+  <a href="#computer-applications">Applications</a> •
+  <a href="#chart_with_upwards_trend-run-experiments-and-results">Experiments</a>
+</p>
+
 
 
 ## :books: Papers
