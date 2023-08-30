@@ -19,13 +19,154 @@
 
 ## :books: Papers
 
-| Paper | Link | Type | mAP | Speed | Backbone | Neck | Head | Augmentation | Training Details | Main Idea of Paper | Image | Other Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| R-CNN | [Paper](https://arxiv.org/abs/1311.2524) | Two-Stage | 58.7 | 5 FPS | VGG-16 | RPN | Fast R-CNN | Horizontal Flipping | SGD | Proposal-based object detection with a Region Proposal Network (RPN) and a Fast R-CNN classifier. | <img src="images/rcnn.png" width="150"> | Notes for R-CNN |
-| Fast R-CNN | [Paper](https://arxiv.org/abs/1504.08083) | Two-Stage | 70.0 | 9 FPS | VGG-16 | RPN | Fast R-CNN | Horizontal Flipping, Scale Jittering | SGD | A faster version of R-CNN with a shared convolutional feature map, a Region Proposal Network (RPN), and a Fast R-CNN classifier. | <img src="images/fast_rcnn.png" width="150"> | Notes for Fast R-CNN |
-| Faster R-CNN | [Paper](https://arxiv.org/abs/1506.01497) | Two-Stage | 42.1 | 17 FPS | ResNet-50 | RPN | Fast R-CNN | Horizontal Flipping, Scale Jittering, Random Crop | SGD | Improves upon Fast R-CNN by introducing an Region Proposal Network (RPN) that shares the same convolutional features as the object detection network. | <img src="images/faster_rcnn.png" width="150"> | Notes for Faster R-CNN |
-| Mask R-CNN | [Paper](https://arxiv.org/abs/1703.06870) | Two-Stage | 64.2 | 4 FPS | ResNet-50 | FPN | Mask R-CNN | Horizontal Flipping, Scale Jittering, Random Crop | SGD | A variant of Faster R-CNN with an additional branch for predicting object masks in parallel with the existing branch for bounding box recognition. | <img src="images/mask_rcnn.png" width="150"> | Notes for Mask R-CNN |
 
+<h3><b>R-CNN</b></h3>
+
+- **Paper:** [R-CNN Paper](https://arxiv.org/abs/1311.2524)
+- **Type:** Two-Stage
+- **mAP:** 58.7
+- **Speed:** 5 FPS
+- **Backbone:** VGG-16
+- **Neck:** RPN
+- **Head:** Fast R-CNN
+- **Main Idea:** Proposal-based object detection with a Region Proposal Network (RPN) and a Fast R-CNN classifier.
+
+<h3><b>Fast R-CNN</b></h3>
+
+- **Paper:** [Fast R-CNN Paper](https://arxiv.org/abs/1504.08083)
+- **Type:** Two-Stage
+- **mAP:** 70.0
+- **Speed:** 9 FPS
+- **Backbone:** VGG-16
+- **Neck:** RPN
+- **Head:** Fast R-CNN
+- **Augmentation:** Horizontal Flipping, Scale Jittering
+- **Main Idea:** A faster version of R-CNN with a shared convolutional feature map, a Region Proposal Network (RPN), and a Fast R-CNN classifier.
+
+
+<h3><b>You Only Look Once: Unified, Real-Time Object Detection</b></h3>
+
+- **Paper:** [YOLO v1](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Redmon_You_Only_Look_CVPR_2016_paper.pdf)
+- **Publish date:** 2016
+- **Type:** One Stage
+- **mAP:** 63.40%
+- **Speed:** 45 fps
+- **Backbone:** "designed their own convolutional backbone which was inspired by GoogLeNet
+- **Head:** 2 fully connected layer with grid cell and bounding boxes
+- **Augmentation:** For data augmentation introduce random scaling and translations of up to 20% of the original image size. also randomly adjust the exposure and saturation of the image by up to a factor of 1:5 in the HSV color space
+- **Notes:** Frame object detection as a regression problem to spatially separated bounding boxes and associated class probabilities. A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance. YOLO sees the entire image during training and test time so it implicitly encodes contextual  information about classes as well as their appearance divides the input image into an S × S grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object. Each grid cell predicts B bounding boxes and confidence scores for those boxes"
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/fb852895-1e27-4e77-ac0f-f36b827f03ae)
+  
+<h3><b>SSD: Single Shot MultiBox Detector</b></h3>
+
+- **Paper:** [SSD Paper](https://arxiv.org/pdf/1512.02325)
+- **Publish date:** 2019
+- **Type:** One Stage
+- **mAP:** "300*300 input 74.3% mAP on VOC2007 and 500*500 input 76.9%"
+- **Speed:** "input 300*300 on VOC2007 59 FPS on nvidia titan X
+- **Backbone:** VGG-16
+- **Augmentations:** Use the entire original input image. Sample a patch so that the minimum jaccard  overlap with the objects is 0.1, 0.3, 0.5, 0.7, or 0.9. Randomly sample a patch.
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/337efba5-35c6-4f66-9b8e-c27f5a40cda6)
+
+  
+<h3><b>YOLO9000: Better, Faster, Stronger</b></h3>
+
+- **Paper:** [YOLO v2 Paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/Redmon_YOLO9000_Better_Faster_CVPR_2017_paper.pdf)
+- **Publish date:** 2017
+- **Type:** One Stage
+- **mAP:** 78.6 on voc2007
+- **Speed:** 40 FPS
+- **Backbone:** Darknet-19
+- **Augmentation:** Use a similar data augmentation to YOLO and SSD with random crops, color shifting, etc.
+- **Training Details:** Train the network for 160 epochs with a starting learning rate of 10e−3, dividing it by 10 at 60 and 90 epochs. use a weight decay of 0.0005 and momentum of 0.9.
+- **Notes:** "1) adding batch normalization on all of the  convolutional layers in YOLO get more than 2% improvement in mAP.
+2) first fine tune the classification network at the full 448 × 448 resolution for 10 epochs on ImageNet. then fine tune the resulting network on detection. This gives us an increase of almost 4% mAP.
+3) Convolutional With Anchor Boxes: remove the fully connected
+ layers from YOLO and use anchor boxes to predict bounding boxes.Even though the mAP decreases, the increase in recall happens.
+4) run k-means clustering on the training set bounding boxes to automatically find good priors.
+5) Instead of predicting offsets follow the approach of YOLO and  predict location coordinates relative to the locationof the grid cell. This bounds the ground truth to fall between 0 and 1. We use a logistic.
+5) Passthrough layer that brings features from an earlier layer at 26 × 26 resolution.
+6) Training Instead of fixing the input image size change the network every few iterations. Every 10 batches our network randomly chooses a new image dimension size.
+7) Combine datasets using WordTree can train our joint model on classification and detection.
+
+<h3><b>YOLOv3: An Incremental Improvement</b></h3>
+
+- **Paper:** [YOLO v3 Paper](https://arxiv.org/pdf/1804.02767)
+- **Publish date:** 2018
+- **Type:** One Stage
+- **mAP:** 51.5%
+- **Speed:** 78 fps
+- **Backbone:** Darknet-53
+- **Training Details:** Train on full images with no hard negative mining or any of that stuff. We use multi-scale training, lots of data augmentation, batch normalization, all the standard stuff. use the Darknet neural network framework for training and testing
+- **Notes:** Better at detecting smaller objects and stronger than previous versions!.for detect smaller objects:YOLO v3, in total uses 9 anchor boxes. Three for each scale. If you’re training YOLO on your own dataset, you should go about using K-Means clustering to generate 9 anchors.
+
+<h3><b>YOLOv4: Optimal Speed and Accuracy of Object Detection</b></h3>
+
+- **Paper:** [YOLO v4 Paper](https://arxiv.org/pdf/2004.10934)
+- **Publish date:** 2020
+- **Type:** One Stage
+- **mAP:** 43.5% AP (65.7% AP50)
+- **Speed:** 65 FPS on Tesla V100
+- **Backbone:** CSPDarknet53
+- **Head:** YOLO-v3
+- **Notes:** YoloV4 is an important improvement of YoloV3, the implementation of a new architecture in the Backbone and the modifications in the Neck have improved the mAP(mean Average Precision) by 10% and the number of FPS(Frame per Second) by 12%. In addition, it has become easier to train this neural network on a single GPU.
+  
+
+<h3><b>YOLOX: Exceeding YOLO Series in 2021</b></h3>
+
+- **Paper:** [YOLO X Paper](https://arxiv.org/pdf/2107.08430.pdf)
+- **Publish date:** 2021
+- **Type:** One Stage
+- **Backbone:** DarkNet53
+- **Neck:** SPP
+- **Head:** Anchor free
+- **Augmentations:** Random Horizontal Flip, Color Jitter, discard the RandomResizedCrop strategy, because we found the RandomResizedCrop is kind of overlapped with the planned mosaic augmentation.
+- **Training Details:** EMA weights updating, cosine lr schedule, IoU loss and IoU-aware branch.300 epochs with 5 epochs warmup on COCO train2017" with
+- **Notes:**  (1). Replacing YOLO’s head with a decoupled one greatly improves the converging speed . 2). The decoupled head is essential to the end-to-end version of YOLO)
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/af7c0cc3-1eb8-45bf-b158-6a8e8b7b5a22)
+
+<h3><b>Densely Connected Convolutional Networks</b></h3>
+
+- **Paper:** [DenseNet Paper](https://arxiv.org/pdf/1608.06993.pdf)
+- **Publish date:** 2018
+- **Main Idea:** The core of DenseNet is using Dense blocks which is an essential of the idea behind it all. The core idea is that within a block, it contains multiple layers. All previous attempts before this paper only used the layers in sequential manner. An output of a layer is fed to the next layer.
+- **Advantages:** they alleviate the vanishing-gradient problem, strengthen feature propagation, encourage feature reuse, and substantially reduce the number of parameters.One big advantage of DenseNets is their improved flow of information and gra dients throughout the network,Each layer has direct access to the gradients from the loss function and the original input signal,eading to an implicit deep supervision.Further, we also observe that dense connections have a regularizing effect.
+- **Notes:** we never combine features through summation before they are passed into a layer; in stead, we combine features by concatenating them.Further, we also observe that dense connections have a regularizing effect,One explanation for the improved accuracy of dense convolutional networks may be that individual layers receive additional supervision from the loss function through the shorter connections.
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/41abc2b8-3f3c-4dfe-bc0e-87ea9b4572ef)
+
+<h3><b>CSPNET: A NEW BACKBONE THAT CAN ENHANCE LEARNING CAPABILITY OF CNN</b></h3>
+
+- **Paper:** [CSPNET Paper](https://arxiv.org/pdf/1911.11929.pdf)
+- **Publish date:** 2019
+- **Main Idea:** The main purpose of designing CSPNet is to enable this architecture to achieve a richer gradient combination while reducing the amount of computation. This aim is achieved by partitioning feature map of the base layer into two parts and then merging them through a proposed cross-stage hierarchy. Our main concept is to make the gradient flow propagate through different network paths by splitting the gradient flow. In this by splitting the gradient flow
+- **Advantages:** 1) Strengthening learning ability of a CNN. 2) Removing computational bottlenecks. 3) Reducing memory costs
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/b32ed182-c45f-4ff2-88c2-7ea6047b82cc)
+
+<h3><b>Path Aggregation Network for Instance Segmentation</b></h3>
+
+- **Paper:** [PA Net Paper](https://arxiv.org/pdf/1803.01534.pdf)
+- **Publish date:** 2018
+- **Main Idea:** Specifically, we enhance the entire feature hierarchy with accurate localization signals in lower layers by bottom-up path augmentation,
+- **Advantages:** Features in multiple levels together are helpful for accurate prediction.
+- **Notes:** We use max operation to fuse features from different levels, which letsvnetwork select element-wise useful information.
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/f56cf01b-48ba-4945-b2ab-ee4e053d9d83)
+
+<h3><b>EfficientDet: Scalable and Efficient Object Detection</b></h3>
+
+- **Paper:** [EfficientDet Paper](https://arxiv.org/pdf/1911.09070.pdf)
+- **Publish date:** 2020
+- **Main Idea:** They propose a weighted bi-directional feature pyra mid network (BiFPN), which allows easy and fast multi scale feature fusion; Second, They propose a compound scal ing method that uniformly scales the resolution, depth, and width for all backbone, feature network, and box/class pre diction networks at the same time.
+- **Advantages:** Aiming at optimizing both accuracy and efficiency, we would like to develop a family of models that can meet a wide spectrum of resource constraints.
+- **Notes:** While fusing different input features, most previous works simply sum them up without distinction;which introduces learnable weights to learn the importance of different input features, while repeatedly applying top down and bottom-up multi-scale feature fusion.
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/87a27600-2efe-4838-b64a-93be952b5dcc)
+
+<h3><b>Squeeze-and-Excitation Networks</b></h3>
+
+- **Paper:** [SE Net Paper](https://arxiv.org/pdf/1709.01507.pdf)
+- **Publish date:** 2019
+- **Main Idea:** They focus instead on the channel relationship and propose a novel architectural unit, which they term the “Squeeze-and-Excitation” (SE) block, that adaptively recalibrates channel-wise feature responses by explicitly modelling interdependencies between channels.
+- **Advantages:** They show that these blocks can be stacked together to form SENet architectures that generalise extremely effectively across different datasets. They further demonstrate that SE blocks bring significant improvements in performance for existing state-of-the-art CNNs at slight additional computational cost.
+- ![image](https://github.com/sobhanshukueian/Object-Detectives/assets/47561760/f8f60818-4e8f-4086-9b87-4c8c5c673939)
 
 
 ## :mag_right: Comparison between YOLOv4 and YOLOv5
