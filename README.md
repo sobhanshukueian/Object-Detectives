@@ -24,8 +24,8 @@
 
 - **Paper:** [R-CNN Paper](https://arxiv.org/abs/1311.2524)
 - **Type:** Two-Stage
-- **mAP:** 58.7
-- **Speed:** 5 FPS
+- **mAP:** 66.0 on VOC(2007)
+- **Speed:** 0.02 FPS
 - **Backbone:** VGG-16
 - **Neck:** RPN
 - **Head:** Fast R-CNN
@@ -35,8 +35,8 @@
 
 - **Paper:** [Fast R-CNN Paper](https://arxiv.org/abs/1504.08083)
 - **Type:** Two-Stage
-- **mAP:** 70.0
-- **Speed:** 9 FPS
+- **mAP:** 66.9 on VOC(2007)
+- **Speed:** 0.5 FPS
 - **Backbone:** VGG-16
 - **Neck:** RPN
 - **Head:** Fast R-CNN
